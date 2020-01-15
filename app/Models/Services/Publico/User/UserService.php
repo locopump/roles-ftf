@@ -284,4 +284,67 @@ Class UserService
 
         return response()->json($response, $code, $headers);
     }
+
+    public function deleteUser(int $id)
+    {
+        $response['status'] = 0;
+        $response['message'] = '';
+        $code = 400;
+        $headers = ['Content-Type' => 'application/json; charset=UTF-8'];
+
+        try {
+            $deleted_rows = $this->user_repo->delete($id);
+
+            if ($deleted_rows > 0) {
+                $code = 200;
+                $response = [
+                    'success' => true,
+                    'data' => $deleted_rows . ' rows deleted.',
+                    'message' => 'Success.',
+                    'code' => $code
+                ];
+
+            } else {
+                $code = 202;
+                $response = [
+                    'success' => false,
+                    'error' =>
+                        [
+                            'type' => 'Query',
+                            'description' => null
+                        ],
+                    'message' => 'Error detected!!',
+                    'code' => $code
+                ];
+            }
+        } catch (QueryException $e) {
+            $response = [
+                'success' => false,
+                'error' =>
+                    [
+                        'type' => 'Query',
+                        'description' => null
+                    ],
+                'message' => '¡ERROR! contact with support.',
+                'code' => $code
+            ];
+            Log::critical('Delete user',
+                ['request' => $response, 'exception' => $e->getMessage()]);
+        } catch (Exception $e) {
+            $response = [
+                'success' => false,
+                'error' =>
+                    [
+                        'type' => 'Code',
+                        'description' => null
+                    ],
+                'message' => '¡ERROR! contact with support.',
+                'code' => $code
+            ];
+            Log::alert('Delete user',
+                ['request' => $response, 'exception' => $e->getMessage()]);
+        }
+
+        return response()->json($response, $code, $headers);
+    }
 }

@@ -28,4 +28,10 @@ interface UserInterface
      * @return mixed
      */
     public function getRow(int $id);
+
+    /**
+     * @param int $id
+     * @return mixed
+     */
+    public function delete(int $id);
 }

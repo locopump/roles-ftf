@@ -38,4 +38,12 @@ class UserRepository implements UserInterface
         return $data;
     }
 
+    public function delete(int $id) {
+        $affected_rows = DB::table('public.user')
+            ->where('id', $id)
+            ->delete();
+
+        return $affected_rows;
+    }
+
 }

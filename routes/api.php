@@ -13,13 +13,9 @@ use Illuminate\Http\Request;
 |
 */
 
-//Route::middleware('auth:api')->get('/user', function (Request $request) {
-//    return $request->user();
-//});
-
-//Route::group(['middleware' => 'auth:api'], function () {
 Route::group(['api'], function () {
     Route::get('users/{id?}', 'API\Intranet\UserController@getUser');
     Route::post('users/create', 'API\Intranet\UserController@addUser');
-    Route::post('users/update/{id}', 'API\Intranet\UserController@updateUser');
+    Route::post('users/update', 'API\Intranet\UserController@updateUser');
+    Route::post('users/delete', 'API\Intranet\UserController@deleteUser');
 });

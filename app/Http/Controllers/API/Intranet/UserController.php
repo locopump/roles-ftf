@@ -53,15 +53,32 @@ class UserController extends Controller
 
     public function updateUser(Request $request)
     {
-        $id = (int) $request->get('id');
         $data = [];
         $user = [];
 
         if ($request->isMethod('post')) {
-            $request->get('name') ? $data['name'] = $request->get('name') : '';
-            dd($id);
+            $id = (int) $request->get('id');
+            if ($request->get('name')) $data['name'] = $request->get('name');
+            if ($request->get('username')) $data['username'] = $request->get('username');
+            if ($request->get('email')) $data['email'] = $request->get('email');
+            if ($request->get('usergroup')) $data['usergroup'] = $request->get('usergroup');
+            if ($request->get('enabled')) $data['enabled'] = $request->get('enabled');
+            if ($request->get('activated')) $data['activated'] = $request->get('activated');
+            if ($request->get('lastvisit')) $data['lastvisit'] = $request->get('lastvisit');
             $user = $this->userService->updateUser($data, $id);
-//            dd($user);
+        }
+
+        return $user;
+
+    }
+
+    public function deleteUser(Request $request)
+    {
+        $user = [];
+
+        if ($request->isMethod('post')) {
+            $id = (int) $request->get('id');
+            $user = $this->userService->deleteUser($id);
         }
 
         return $user;
