@@ -1,0 +1,130 @@
+{
+	"info": {
+		"_postman_id": "1282291c-ce3d-45e3-8fb4-21b6da2bab24",
+		"name": "fulltimeforce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "{{api}}/users/4",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api}}/users/4",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"users",
+						"4"
+					]
+				},
+				"description": "List specific user"
+			},
+			"response": []
+		},
+		{
+			"name": "{{api}}/users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api}}/users",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{api}}/users/create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n    \"name\": \"C-3PO\",\n    \"username\": \"c3po\",\n    \"email\": \"c3po@c3po.com\",\n    \"usergroup\": \"Registered\",\n    \"enabled\": \"1\",\n    \"activated\": \"1\",\n    \"lastvisit\": \"2020-01-15\"\n}"
+				},
+				"url": {
+					"raw": "{{api}}/users/create",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"users",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{api}}/users/update",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n \t\"id\": 1,\n    \"name\": \"Lukito Sky Walker\",\n    \"username\": \"lukito\",\n    \"email\": \"luke@starwars.com\",\n    \"usergroup\": \"Registered\",\n    \"enabled\": 1,\n    \"activated\": 0,\n    \"lastvisit\": \"2020-01-15\"\n}"
+				},
+				"url": {
+					"raw": "{{api}}/users/update",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"users",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{api}}/users/delete",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n \t\"id\": 6\n}"
+				},
+				"url": {
+					"raw": "{{api}}/users/delete",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"users",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
